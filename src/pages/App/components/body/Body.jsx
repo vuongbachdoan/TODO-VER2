@@ -1,12 +1,12 @@
-import { ReactComponent as EditIcon } from '../../../../assets/images/icon-edit.svg';
-import { ReactComponent as MoreIcon } from '../../../../assets/images/icon-more.svg';
-import { CtButton } from '../../../../shared/components/Button/Button';
-import { ReactComponent as AddIcon } from '../../../../assets/images/icon-add.svg';
-
-import './Body.scss';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TaskAdd } from '../task-add/TaskAdd';
-import { useState } from 'react';
+import { CtButton } from '../../../../shared/components/Button/Button';
+import { ReactComponent as AddIcon } from '../../../../assets/images/icon-add.svg';
+import { ReactComponent as EditIcon } from '../../../../assets/images/icon-edit.svg';
+import { ReactComponent as MoreIcon } from '../../../../assets/images/icon-more.svg';
+
+import './Body.scss';
 
 export const Body = () => {
     const tasks = useSelector((state) => state.appData.tasks);
