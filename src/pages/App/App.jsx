@@ -12,7 +12,7 @@ export const App = () => {
         <div className="app">
             <AppHeader />
             <div className="app-body">
-                <Sidebar />
+                { !isCollapseSidebar && <Sidebar/> }
                 <Body />
             </div>
         </div>

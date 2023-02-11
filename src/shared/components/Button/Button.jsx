@@ -2,10 +2,11 @@ import { useDispatch } from 'react-redux';
 import './Button.scss';
 import { setTasks } from '../../../pages/App/action';
 
-export const CtButton = ({ data }) => {
+export const CtButton = ({ data, onClick }) => {
     const dispatch = useDispatch();
     const handeClick = () => {
-        dispatch(setTasks("Learn the basics with the easy-to-follow Getting Started Guide 🔗"))
+        // dispatch(setTasks("Learn the basics with the easy-to-follow Getting Started Guide 🔗"))
+        onClick()
     }
 
     return (
