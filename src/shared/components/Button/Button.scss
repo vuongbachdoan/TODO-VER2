@@ -1,0 +1,43 @@
+.ct__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    min-height: 28px;
+    min-width: 100px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 3px;
+    &:hover {
+        background-color: #eee;
+    }
+}
+
+.ct__button.suffixIcon {
+    justify-content: flex-end;
+}
+
+.ct__button.prefixIcon.suffixIcon {
+    justify-content: space-between;
+    column-gap: 7px;
+}
+
+.ct__btn-danger {
+    background-color: rgb(250, 65, 65);
+    color: #fff;
+    &:hover {
+        background-color: rgb(232, 57, 57);
+    }
+}
+
+.ct__btn-warning {
+    background-color: rgb(236, 148, 66);
+}
+
+.ct__btn-success {
+    background-color: rgb(66, 236, 114);
+}
+
+.ct__btn-primary {
+    background-color: rgb(114, 66, 236);
+}

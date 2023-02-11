@@ -1,0 +1,26 @@
+.ct__menu {
+    width: calc(100% - 28px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 14px;
+}
+
+.ct__menu-item {
+    width: calc(100% - 20px);
+    min-height: 35px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+.ct__menu-item.suffixIcon {
+    justify-content: flex-end;
+}
+
+.ct__menu-item.prefixIcon.suffixIcon {
+    justify-content: space-between;
+}

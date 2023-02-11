@@ -1,0 +1,93 @@
+@import url('../fonts/font.scss');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html {
+    font-family: 'Jost', sans-serif;
+}
+
+// alignment
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+}
+
+// padding
+.p1 {
+    padding: .1rem;
+}
+
+// button
+.btn {
+    width: fit-content;
+    height: fit-content;
+    padding: 3px 6px;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: #41eca7;
+    color: #fff;
+    img {
+        color: #fff;
+    }
+}
+
+.btn-squared {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-rounded {
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// list
+.ct__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// input
+.ct__input {
+    height: 28px;
+    min-width: 175px;
+    width: 100%;
+    border-radius: 3px;
+    background-color: #eee;
+    border: 0px;
+    padding: 4px 8px;
+    &:focus {
+        outline: none;
+        border: 0px;
+    }
+}
+
+// outline
+.outline {
+    outline: .5px solid #eee;
+}
