@@ -6,14 +6,14 @@ import { ReactComponent as AddIcon } from '../../../../assets/images/icon-add.sv
 import './Body.scss';
 import { useSelector } from 'react-redux';
 import { TaskAdd } from '../task-add/TaskAdd';
-
-const data = {
-    description: 'Add task',
-    prefixIcon: <AddIcon />
-}
+import { useState } from 'react';
 
 export const Body = () => {
     const tasks = useSelector((state) => state.appData.tasks);
+    const [isAddTask, setAddTask] = useState(false);
+    const setTask = (val) => {
+        setAddTask(val)
+    }
 
     return (
         <div className="body">
@@ -45,8 +45,8 @@ export const Body = () => {
                             })
                         }
                     </ul>
-                    <CtButton data={data} />
-                    <TaskAdd/>
+                    { !isAddTask && <CtButton onClick={() => setTask(true)} data={{description: 'Add task', prefixIcon: <AddIcon />}}/> }
+                    { isAddTask && <TaskAdd onClick={() => setTask(false)}/> }
                 </section>
             </div>
         </div>

@@ -17,7 +17,11 @@ const btnsData = [
     }
 ]
 
-export const TaskAdd = () => {
+export const TaskAdd = ({onClick}) => {
+    const handleClick = () => {
+        onClick();
+    }
+
     return (
         <div className="task-add">
             <input className="ct__input" type="text" placeholder="Task name" />
@@ -40,8 +44,8 @@ export const TaskAdd = () => {
                     {label: "Today", prefixIcon: <TodayIcon/>},
                 ]}/>
                 <div className="row">
-                    <CtButton data={{description: 'Cancel', btnType: 'ct__btn-danger'}} />
-                    <CtButton data={{description: 'Add task'}} />
+                    <CtButton data={{description: 'Cancel', btnType: 'ct__btn-danger'}} onClick={handleClick}/>
+                    <CtButton data={{description: 'Add task'}} onClick={handleClick}/>
                 </div>
             </div>
             
