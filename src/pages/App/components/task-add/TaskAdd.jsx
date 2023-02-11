@@ -1,10 +1,10 @@
 import { CtButton } from "../../../../shared/components/Button/Button";
+import { CtDropdown } from "../../../../shared/components/Dropdown/Dropdown";
 import { ReactComponent as CalendarIcon } from "../../../../assets/images/icon-calendar.svg";
 import { ReactComponent as ClockIcon } from "../../../../assets/images/icon-clock.svg";
 import { ReactComponent as TodayIcon } from "../../../../assets/images/icon-today.svg";
 
 import './TaskAdd.scss';
-import { CtDropdown } from "../../../../shared/Dropdown/Dropdown";
 
 const btnsData = [
     {

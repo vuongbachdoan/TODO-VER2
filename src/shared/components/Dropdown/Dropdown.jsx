@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ReactComponent as DownIcon } from "../../assets/images/icon-down.svg";
+import { ReactComponent as DownIcon } from "../../../assets/images/icon-down.svg";
 
 import './Dropdown.scss';
 

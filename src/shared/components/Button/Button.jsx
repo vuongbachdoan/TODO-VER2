@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
-import './Button.scss';
 import { setTasks } from '../../../pages/App/action';
+
+import './Button.scss';
 
 export const CtButton = ({ data, onClick }) => {
     const dispatch = useDispatch();

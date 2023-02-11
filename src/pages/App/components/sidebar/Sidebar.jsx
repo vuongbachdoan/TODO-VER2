@@ -1,5 +1,5 @@
-import {ReactComponent as TodayIcon} from '../../../../assets/images/icon-today.svg';
 import { CtMenu } from '../../../../shared/components/Menu/Menu';
+import {ReactComponent as TodayIcon} from '../../../../assets/images/icon-today.svg';
 
 import './Sidebar.scss';
 
