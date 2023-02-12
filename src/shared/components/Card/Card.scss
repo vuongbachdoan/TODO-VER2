@@ -1,0 +1,25 @@
+.ct__wrap_card {
+    border-radius: 12px;
+    background-color: #fff;
+    border: .5px solid #eee;
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 500px;
+    max-height: 60vh;
+    
+    .ct__card_title {
+        min-height: 35px;
+        border-bottom: .5px solid #eee;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ct__card_body {
+        .ct__card_footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
