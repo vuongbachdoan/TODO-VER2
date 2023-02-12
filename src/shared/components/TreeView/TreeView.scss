@@ -1,0 +1,43 @@
+.ct__treeview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 12px;
+    min-height: 35px;
+    width: calc(100% - 24px);
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+        background-color: #eee;
+    }
+
+    .ct__tree-childs {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+
+        .ct__tree-child {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3px 12px;
+            min-height: 35px;
+            width: calc(100% - 24px);
+            border-radius: 10px;
+            
+            &:hover {
+                background-color: #eeeeee50;
+            }
+        }
+    }
+}
+
+.bg-gray {
+    background-color: #eee;
+}
+
+.icon-90deg {
+    transform: rotateZ(90deg);
+}

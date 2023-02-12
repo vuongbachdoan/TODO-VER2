@@ -1,0 +1,50 @@
+.ct__input-field {
+    width: 100%;
+    position: relative;
+
+    .ct__input-text {
+        min-height: 28px;
+        min-width: 175px;
+        width: calc(100% - 46px);
+        border-radius: 6px;
+        background-color: #eee;
+        border: .5px solid #eee;
+        padding: 4px 34px 4px 8px;
+        margin: 2px;
+        font-size: 12px;
+
+        &::-ms-reveal {
+            display: none;
+        }
+    
+        &:focus {
+            outline: none;
+            border: .5px solid #2d5fdc;
+            box-shadow: 0px 0px 3px 2px #2d5fdc50;
+        }
+    }
+
+    .ct__input-suffix_icon {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+        margin: 2px;
+        border: .5px solid transparent;
+    }
+}
+
+.ct__input-label {
+    margin-left: 14px;
+}
+
+.ct__input-wrapper {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+

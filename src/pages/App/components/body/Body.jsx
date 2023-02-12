@@ -19,7 +19,7 @@ export const Body = () => {
         <div className="body">
             <div className="app-body-editor">
                 <section className='task-section'>
-                    <h5>Title Section</h5>
+                    <h4>Title Section</h4>
                     <ul className='ct__list list-tasks'>
                         {
                             tasks.map((task) => {

@@ -5,6 +5,7 @@ import { ReactComponent as ClockIcon } from "../../../../assets/images/icon-cloc
 import { ReactComponent as TodayIcon } from "../../../../assets/images/icon-today.svg";
 
 import './TaskAdd.scss';
+import { CtInput } from "../../../../shared/components/Input/Input";
 
 const btnsData = [
     {
@@ -24,8 +25,8 @@ export const TaskAdd = ({onClick}) => {
 
     return (
         <div className="task-add">
-            <input className="ct__input" type="text" placeholder="Task name" />
-            <input className="ct__input" type="text" placeholder="Description" />
+            <CtInput data={{label: "Task name", required: true}}/>
+            <CtInput data={{label: "Description", required: false, class: "ct__mt-0"}}/>
             <div className="row">
                 {
                     btnsData.map((data) => {

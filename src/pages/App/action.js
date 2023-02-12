@@ -6,6 +6,7 @@ export const appSlice = createSlice(
         initialState: {
             sidebarCollapse: false,
             currentRoute: 'today',
+            addingWorkspaceHide: false,
             tasks: []
         },
         reducers: {
@@ -17,10 +18,13 @@ export const appSlice = createSlice(
             },
             setTasks: (state, action) => {
                 state.tasks = [...state.tasks, action.payload];
+            },
+            toogleAddingWorkspace: (state) => {
+                state.addingWorkspaceHide = !state.addingWorkspaceHide;
             }
         }
     },
 )
 
-export const { changeCurrentRoute, toogleSidebar, setTasks } = appSlice.actions;
+export const { changeCurrentRoute, toogleSidebar, setTasks, toogleAddingWorkspace } = appSlice.actions;
 export default appSlice.reducer;

@@ -27,12 +27,17 @@ html {
     padding: .1rem;
 }
 
+// margin 
+.ct__mt-0 {
+    margin-top: 0px;
+}
+
 // button
 .btn {
     width: fit-content;
     height: fit-content;
     padding: 3px 6px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .btn-primary {
@@ -46,7 +51,7 @@ html {
 .btn-squared {
     width: 28px;
     height: 28px;
-    border-radius: 3px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,4 +95,10 @@ html {
 // outline
 .outline {
     outline: .5px solid #eee;
+}
+
+// animate 
+.ct__animate-solid {
+    transition-duration: .1s;
+    transition-timing-function: linear;
 }
