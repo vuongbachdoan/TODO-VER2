@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Body } from "./components/body/Body";
+import { toogleAddingWorkspace } from "../../redux/reducers/appReducer";
+import { AppHeader } from "../../layout/app_header/AppHeader";
 import { Sidebar } from "./components/sidebar/Sidebar";
+import { Body } from "./components/body/Body";
 import { CtCard } from "../../shared/components/Card/Card";
 import { CtInput } from "../../shared/components/Input/Input";
-import { AppHeader } from "../../layout/app_header/AppHeader";
 import { ReactComponent as InformationIcon } from "../../assets/images/icon-information.svg";
 
 import './App.scss';
-import { toogleAddingWorkspace } from "./action";
 
 const BodyAddWorkspaceCard = () => {
     return (
-        <CtInput data={{ label: "Email", placeholder: "example@gmail.com", required: true }} />
+        <CtInput data={{ label: "Workspace name", placeholder: "ex: my-workspace", required: true }} />
     );
 }
 

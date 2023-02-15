@@ -1,10 +1,10 @@
+import { useDispatch } from 'react-redux';
+import { toogleAddingWorkspace } from '../../../../redux/reducers/appReducer';
 import { CtMenu } from '../../../../shared/components/Menu/Menu';
+import { CtTreeView } from '../../../../shared/components/TreeView/TreeView';
 import {ReactComponent as TodayIcon} from '../../../../assets/images/icon-today.svg';
 
 import './Sidebar.scss';
-import { CtTreeView } from '../../../../shared/components/TreeView/TreeView';
-import { useDispatch } from 'react-redux';
-import { toogleAddingWorkspace } from '../../action';
 
 const data = [
     {

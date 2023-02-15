@@ -8,6 +8,7 @@
     width: fit-content;
     height: fit-content;
     border-radius: 10px;
+    text-decoration: none;
     &:hover {
         background-color: #eee;
     }
@@ -36,6 +37,9 @@
 
 .ct__btn-success {
     background-color: rgb(66, 236, 114);
+    &:hover {
+        background-color: rgb(39, 232, 94);
+    }
 }
 
 .ct__btn-primary {

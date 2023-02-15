@@ -28,8 +28,18 @@ html {
 }
 
 // margin 
+
+.ct__my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .ct__mt-0 {
     margin-top: 0px;
+}
+
+.ct__mt-1 {
+    margin-top: 1rem;
 }
 
 // button
@@ -101,4 +111,14 @@ html {
 .ct__animate-solid {
     transition-duration: .1s;
     transition-timing-function: linear;
+}
+
+// text 
+.ct__text-white {
+    color: #fafafa;
+}
+
+.ct__desctiption {
+    font-size: 12px;
+    color: #999;
 }
