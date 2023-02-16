@@ -2,7 +2,8 @@ import axios from "axios";
 
 const URL = "http://localhost:8000"
 const END_POINT = {
-    user: ''
+    singUp: '/api/v1/auth/sign-up',
+    logIn: '/api/v1/auth/log-in',
 }
 
 export const UserService = {

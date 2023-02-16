@@ -2,8 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { CtButton } from "../../shared/components/Button/Button";
 import { CtInput, CtPassword } from "../../shared/components/Input/Input";
 import { useState } from "react";
-import { UserService } from "../../shared/services/userService";
 import { useEffect } from "react";
+import { validateEmail } from "../../shared/utils/validateEmail";
+import { AuthService } from "../../shared/services/authService";
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -12,6 +13,11 @@ export const SignUp = () => {
     const handleEmailValue = (val) => {
         getEmailValue(val);
     }
+
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    useEffect(() => {
+        setIsEmailValid(validateEmail(email));
+    }, [email])
 
     const [password, getPasswordValue] = useState('');
     const handlePasswordValue = (val) => {
@@ -37,9 +43,8 @@ export const SignUp = () => {
             const user = {
                 email: email,
                 password: password,
-                createAt: new Date().toISOString,
             }
-            UserService.create(user)
+            AuthService.signUp(user)
                 .then((res) => {
                     console.log(res);
                     navigate('/app');
@@ -57,7 +62,7 @@ export const SignUp = () => {
                 <div className="login__left">
                     <h3>Create your account</h3>
                     <p className="ct__desctiption">Work better with todoist.</p>
-                    <CtInput data={{ label: "Email", required: true, getInput: (val) => handleEmailValue(val) }} />
+                    <CtInput data={{ label: "Email", required: true, getInput: (val) => handleEmailValue(val), description: isEmailValid ? "" : "Email is invalid", placeholder: "abc@domain.com" }} />
                     <CtPassword data={{ label: "Password", required: true, getInput: (val) => handlePasswordValue(val) }} />
                     <CtPassword data={{ label: "Confirm password", required: true, getInput: (val) => handleConfirmPasswordValue(val), description: isPasswordValid || passwordConfirmed.length === 0 ? "" : "Invalid password" }} />
                     {/* <Link to={"/app"}><CtButton data={{ description: "Sign Up", btnType: "ct__btn-success", class: "ct__my-1" }} onClick={createUser} /></Link> */}

@@ -65,6 +65,9 @@ export const CtInput = ({ data }) => {
                     {data.suffixIcon}
                 </div>
             </div>
+            <p className="ct__input-description">
+                {data.description}
+            </p>
         </div>
     );
 }
