@@ -6,8 +6,11 @@ import "./Login.scss";
 import { useEffect, useState } from "react";
 import { validateEmail } from "../../shared/utils/validateEmail";
 import { AuthService } from "../../shared/services/authService";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/reducers/appReducer";
 
 export const Login = ( ) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [email, getEmailValue] = useState('');
@@ -44,7 +47,8 @@ export const Login = ( ) => {
                 
             AuthService.logIn(user)
                 .then((res) => {
-                    console.log(res);
+                    dispatch(setToken(res.data))
+                    console.log(res.data);
                     navigate('/app');
                 })
                 .catch((err) => console.log(err));

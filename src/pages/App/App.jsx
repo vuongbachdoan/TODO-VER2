@@ -8,6 +8,8 @@ import { CtInput } from "../../shared/components/Input/Input";
 import { ReactComponent as InformationIcon } from "../../assets/images/icon-information.svg";
 
 import './App.scss';
+import { useEffect } from "react";
+import { UserService } from "../../shared/services/userService";
 
 const BodyAddWorkspaceCard = () => {
     return (
@@ -16,12 +18,18 @@ const BodyAddWorkspaceCard = () => {
 }
 
 export const App = () => {
+    const accessToken = useSelector(state => state.appData.token.access_token); 
     const isCollapseSidebar = useSelector(state => state.appData.sidebarCollapse);
     const isAddingWorkspace = useSelector(state => state.appData.addingWorkspaceHide);
     const dispatch = useDispatch();
     const handleAddingWorkspace = () => {
         dispatch(toogleAddingWorkspace())
     }
+
+    useEffect(() => {
+        UserService.getAll(accessToken)
+            .then((res) => console.log(res));
+    }, [accessToken]);
 
     return (
         <div className="app">

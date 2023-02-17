@@ -2,18 +2,27 @@ import axios from "axios";
 
 const URL = "http://localhost:8000"
 const END_POINT = {
-    singUp: '/api/v1/auth/sign-up',
-    logIn: '/api/v1/auth/log-in',
+    getAll: 'api/v1/account'
 }
 
+
 export const UserService = {
-    getAll: () => {
-        axios.get(`${URL}/${END_POINT.user}`)
-        .then((res) => console.log(res));
+    getAll: (accessToken) => {
+        console.log(accessToken);
+        const header = `Bearer ${accessToken}`;
+
+        return axios.get(
+            `${URL}/${END_POINT.getAll}`,
+            {
+                headers: {
+                    Authorization: header
+                }
+            }
+        )
     },
     create: (user) => {
         return axios.post(
-            `${URL}/${END_POINT.user}`, 
+            `${URL}/${END_POINT.auth.singUp}`,
             user
         );
     }

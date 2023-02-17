@@ -5,8 +5,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { validateEmail } from "../../shared/utils/validateEmail";
 import { AuthService } from "../../shared/services/authService";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/reducers/appReducer";
 
 export const SignUp = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [email, getEmailValue] = useState('');
@@ -46,7 +49,8 @@ export const SignUp = () => {
             }
             AuthService.signUp(user)
                 .then((res) => {
-                    console.log(res);
+                    console.log(res.data);
+                    dispatch(setToken(res.data));
                     navigate('/app');
                 })
                 .catch((err) => console.log(err));
