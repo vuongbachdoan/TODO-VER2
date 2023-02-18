@@ -16,13 +16,17 @@ export const CtPassword = ({ data }) => {
 
     const [passwordValue, setPasswordValue] = useState("");
     useEffect(() => {
-        if(passwordValue.length >= 8 || passwordValue.length === 0) {
+        if(passwordValue.length === 0) {
+            setErrorMessage('');
+        }
+        else if(passwordValue.length >= 8) {
             setErrorMessage(null);
         } else {
             setErrorMessage("Password must be greater than 8 characters");
         }
     }, [passwordValue])
     const handlePasswordValue = (val) => {
+        val = val.replace(' ', '')
         setPasswordValue(val);
         data.getInput(val);
     }
@@ -33,7 +37,7 @@ export const CtPassword = ({ data }) => {
                 {data.label} <span style={{ color: "red" }}>{data.required ? "*" : ""}</span>
             </h6>
             <div className="ct__input-field">
-                <input className="ct__input-text" type={`${isPasswordVisible ? "text" : "password"}`} placeholder={data.placeholder} onChange={(e) => handlePasswordValue(e.target.value)}/>
+                <input className="ct__input-text" value={passwordValue} type={`${isPasswordVisible ? "text" : "password"}`} placeholder={data.placeholder} onChange={(e) => handlePasswordValue(e.target.value)}/>
                 <div className="ct__input-suffix_icon">
                     {isPasswordVisible && <EyeIcon className="cursor-pointer" onClick={tooglePassword} />}
                     {!isPasswordVisible && <EyeCrossIcon className="cursor-pointer" onClick={tooglePassword} />}
@@ -47,8 +51,11 @@ export const CtPassword = ({ data }) => {
 }
 
 export const CtInput = ({ data }) => {
+    const [inputValue, setInputValue] = useState("");
     const handleInputValue = (val) => {
-        data.getInput(val)
+        val = data.noSpace ? val.replace(' ', '') : val;
+        setInputValue(val);
+        data.getInput(val);
     }
 
     return (
@@ -60,7 +67,7 @@ export const CtInput = ({ data }) => {
                 <div className="ct__input-prefix_icon">
                     {data.suffixIcon}
                 </div>
-                <input className="ct__input-text" type="text" placeholder={data.placeholder} onChange={(e) => handleInputValue(e.target.value)} />
+                <input className="ct__input-text" type="text" value={inputValue} placeholder={data.placeholder} onChange={(e) => handleInputValue(e.target.value)} />
                 <div className="ct__input-suffix_icon">
                     {data.suffixIcon}
                 </div>

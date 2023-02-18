@@ -9,7 +9,7 @@ import { AuthService } from "../../shared/services/authService";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../redux/reducers/appReducer";
 
-export const Login = ( ) => {
+export const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export const Login = ( ) => {
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
     useEffect(() => {
-        if(password.length >= 8) {
+        if (password.length >= 8) {
             setIsPasswordValid(true);
         } else {
             setIsPasswordValid(false);
@@ -39,12 +39,12 @@ export const Login = ( ) => {
     }, [password])
 
     const handleLogin = () => {
-        if(isPasswordValid) {
+        if (isPasswordValid) {
             const user = {
                 email: email,
                 password: password,
             }
-                
+
             AuthService.logIn(user)
                 .then((res) => {
                     dispatch(setToken(res.data))
@@ -55,7 +55,7 @@ export const Login = ( ) => {
         } else {
             console.warn("Can't create user!")
         }
-        
+
     }
 
     return (
@@ -64,22 +64,39 @@ export const Login = ( ) => {
                 <div className="login__left">
                     <h3>Login with your account</h3>
                     <p className="ct__desctiption">Work better with todoist.</p>
-                    <CtInput data={{ label: "Email", required: true, getInput: (val) => handleEmailValue(val), description: isEmailValid ? "" : "Email is invalid", placeholder: "abc@domain.com" }} />
-                    <CtPassword data={{ label: "Password", required: true, getInput: (val) => handlePasswordValue(val) }} />
-                    <CtButton data={{description: "Login", btnType: "ct__btn-success", class:"ct__my-1"}} onClick={handleLogin}/>
+                    <CtInput
+                        data={{
+                            label: "Email",
+                            required: true,
+                            getInput: (val) => handleEmailValue(val),
+                            description: isEmailValid ? "" : "Email is invalid",
+                            placeholder: "abc@domain.com",
+                            noSpace: true
+                        }}
+                    />
+                    <CtPassword
+                        data={{
+                            label: "Password",
+                            required: true,
+                            getInput: (val) => handlePasswordValue(val),
+                            noSpace: true
+                        }}
+                    />
+                    <CtButton
+                        data={{
+                            description: "Login",
+                            btnType: "ct__btn-success",
+                            class: "ct__my-1"
+                        }}
+                        onClick={handleLogin}
+                    />
 
                     <p className="ct__desctiption">
                         Don't have an account, <Link to={"/sign-up"}>create</Link>.
                     </p>
                 </div>
                 <div className="login__right">
-                    <div className="bg-content">
-                        {/* <h3 className="ct__text-white">Interactive Login</h3>
-                        <div className="bg-action_btns row">
-                            <ArrowIcon className="bg-action_btn" style={{transform: "rotateZ(90deg)"}}/>
-                            <ArrowIcon className="bg-action_btn" style={{transform: "rotateZ(-90deg)"}}/>
-                        </div> */}
-                    </div>
+                    <div className="bg-content"></div>
                 </div>
             </div>
         </div>

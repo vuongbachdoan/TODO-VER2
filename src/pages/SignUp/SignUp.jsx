@@ -66,10 +66,9 @@ export const SignUp = () => {
                 <div className="login__left">
                     <h3>Create your account</h3>
                     <p className="ct__desctiption">Work better with todoist.</p>
-                    <CtInput data={{ label: "Email", required: true, getInput: (val) => handleEmailValue(val), description: isEmailValid ? "" : "Email is invalid", placeholder: "abc@domain.com" }} />
-                    <CtPassword data={{ label: "Password", required: true, getInput: (val) => handlePasswordValue(val) }} />
-                    <CtPassword data={{ label: "Confirm password", required: true, getInput: (val) => handleConfirmPasswordValue(val), description: isPasswordValid || passwordConfirmed.length === 0 ? "" : "Invalid password" }} />
-                    {/* <Link to={"/app"}><CtButton data={{ description: "Sign Up", btnType: "ct__btn-success", class: "ct__my-1" }} onClick={createUser} /></Link> */}
+                    <CtInput data={{ label: "Email", required: true, getInput: (val) => handleEmailValue(val), description: isEmailValid ? "" : "Email is invalid", placeholder: "abc@domain.com", noSpace: true }} />
+                    <CtPassword data={{ label: "Password", required: true, getInput: (val) => handlePasswordValue(val), noSpace: true }} />
+                    <CtPassword data={{ label: "Confirm password", required: true, getInput: (val) => handleConfirmPasswordValue(val), description: isPasswordValid && passwordConfirmed.length !== 0 ? "" : "Password not match", noSpace: true }} />
                     <CtButton data={{ description: "Sign Up", btnType: "ct__btn-success", class: "ct__my-1" }} onClick={createUser} />
 
                     <p className="ct__desctiption">
