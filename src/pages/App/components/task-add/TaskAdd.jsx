@@ -6,6 +6,7 @@ import { ReactComponent as TodayIcon } from "../../../../assets/images/icon-toda
 
 import './TaskAdd.scss';
 import { CtInput } from "../../../../shared/components/Input/Input";
+import { useState } from "react";
 
 const btnsData = [
     {
@@ -19,14 +20,28 @@ const btnsData = [
 ]
 
 export const TaskAdd = ({onClick}) => {
+
+    const [title, setTitle] = useState('');
+    const handleTitle = (val) => {
+        setTitle(val)
+    }
+
+    const [description, setDescription] = useState('');
+    const handleDescription = (val) => {
+        setDescription(val)
+    }
+
     const handleClick = () => {
-        onClick();
+        onClick({
+            title: title,
+            description: description
+        });
     }
 
     return (
         <div className="task-add">
-            <CtInput data={{label: "Task name", required: true}}/>
-            <CtInput data={{label: "Description", required: false, class: "ct__mt-0"}}/>
+            <CtInput data={{label: "Task name", required: true, getInput: (val) => handleTitle(val)}}/>
+            <CtInput data={{label: "Description", required: false, class: "ct__mt-0", getInput: (val) => handleDescription(val)}}/>
             <div className="row">
                 {
                     btnsData.map((data) => {

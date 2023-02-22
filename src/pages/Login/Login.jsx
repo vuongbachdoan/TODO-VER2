@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { validateEmail } from "../../shared/utils/validateEmail";
 import { AuthService } from "../../shared/services/authService";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/reducers/appReducer";
+import { setUserData } from "../../redux/reducers/appReducer";
 
 export const Login = () => {
     const dispatch = useDispatch();
@@ -47,13 +47,14 @@ export const Login = () => {
 
             AuthService.logIn(user)
                 .then((res) => {
-                    dispatch(setToken(res.data))
-                    console.log(res.data);
-                    navigate('/app');
+                    Promise.all([
+                        dispatch(setUserData(res.data))
+                    ])
+                    .then((res) => navigate("/app"))
                 })
                 .catch((err) => console.log(err));
         } else {
-            console.warn("Can't create user!")
+            console.warn("Can't login!")
         }
 
     }

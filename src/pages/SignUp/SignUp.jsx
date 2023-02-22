@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { validateEmail } from "../../shared/utils/validateEmail";
 import { AuthService } from "../../shared/services/authService";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/reducers/appReducer";
+import { setUserData } from "../../redux/reducers/appReducer";
 
 export const SignUp = () => {
     const dispatch = useDispatch();
@@ -38,10 +38,11 @@ export const SignUp = () => {
             setIsPasswordValid(true);
         } else {
             setIsPasswordValid(false);
-        }
+        }   
     }, [password, passwordConfirmed])
 
     const createUser = () => {
+        console.log(password)
         if(isPasswordValid) {
             const user = {
                 email: email,
@@ -50,7 +51,7 @@ export const SignUp = () => {
             AuthService.signUp(user)
                 .then((res) => {
                     console.log(res.data);
-                    dispatch(setToken(res.data));
+                    dispatch(setUserData(res.data));
                     navigate('/app');
                 })
                 .catch((err) => console.log(err));

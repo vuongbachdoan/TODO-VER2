@@ -18,23 +18,23 @@ export const CtTreeView = ({ data }) => {
             <h5 className="col">Workspace</h5>
             <div className="col">
                 <div className="row">
-                    <AddIcon className="cursor-pointer" onClick={handleFunc}/>
+                    <AddIcon className="cursor-pointer" onClick={handleFunc} />
                     <ExpandIcon className={`cursor-pointer ${!isOpenTree ? "icon-90deg" : ""} ct__animate-solid`} onClick={() => handleOpenTree(!isOpenTree)} />
                 </div>
             </div>
 
-            {
-                isOpenTree &&
-                data.children.map((child) => {
-                    return (
-                        <div className="ct__tree-childs">
-                            <div className="ct__tree-child">
-                                <h5 className="col">{child}</h5>
+            <div className="ct__tree-childs">
+                {
+                    isOpenTree &&
+                    data.children.map((child, index) => {
+                        return (
+                            <div key={index} className="ct__tree-child">
+                                <p className="col">{child.name}</p>
                             </div>
-                        </div>
-                    );
-                })
-            }
+                        );
+                    })
+                }
+            </div>
         </div>
     );
 }

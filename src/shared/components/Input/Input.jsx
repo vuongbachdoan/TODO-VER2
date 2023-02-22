@@ -25,6 +25,7 @@ export const CtPassword = ({ data }) => {
             setErrorMessage("Password must be greater than 8 characters");
         }
     }, [passwordValue])
+    
     const handlePasswordValue = (val) => {
         val = val.replace(' ', '')
         setPasswordValue(val);

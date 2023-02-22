@@ -8,8 +8,8 @@ export const appSlice = createSlice(
             currentRoute: 'today',
             addingWorkspaceHide: false,
             tasks: [],
-            token: {},
-            userData: {}
+            userData: {},
+            workspaces: []
         },
         reducers: {
             changeCurrentRoute: (state, action) => {
@@ -21,18 +21,18 @@ export const appSlice = createSlice(
             setTasks: (state, action) => {
                 state.tasks = [...state.tasks, action.payload];
             },
-            toogleAddingWorkspace: (state) => {
-                state.addingWorkspaceHide = !state.addingWorkspaceHide;
-            },
-            setToken: (state, action) => {
-                state.token = action.payload;
+            toogleAddingWorkspace: (state, action) => {
+                state.addingWorkspaceHide = action.payload;
             },
             setUserData: (state, action) => {
                 state.userData = action.payload;
+            },
+            addWorkspace: (state, action) => {
+                state.workspaces = [...state.workspaces, action.payload];
             }
         }
     },
 )
 
-export const { changeCurrentRoute, toogleSidebar, setTasks, toogleAddingWorkspace, setToken } = appSlice.actions;
+export const { changeCurrentRoute, toogleSidebar, setTasks, toogleAddingWorkspace, addWorkspace, setUserData } = appSlice.actions;
 export default appSlice.reducer;

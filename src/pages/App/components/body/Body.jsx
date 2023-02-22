@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { TaskAdd } from '../task-add/TaskAdd';
 import { CtButton } from '../../../../shared/components/Button/Button';
 import { ReactComponent as AddIcon } from '../../../../assets/images/icon-add.svg';
@@ -9,10 +8,14 @@ import { ReactComponent as MoreIcon } from '../../../../assets/images/icon-more.
 import './Body.scss';
 
 export const Body = () => {
-    const tasks = useSelector((state) => state.appData.tasks);
     const [isAddTask, setAddTask] = useState(false);
-    const setTask = (val) => {
-        setAddTask(val)
+
+    const [tasks, setTasks] = useState([]);
+    const handleTask = (isOpen, val) => {
+        if(val !== {}) {
+            setTasks(...tasks, val)
+        }
+        setAddTask(isOpen);
     }
 
     return (
@@ -22,9 +25,9 @@ export const Body = () => {
                     <h4>Title Section</h4>
                     <ul className='ct__list list-tasks'>
                         {
-                            tasks.map((task) => {
+                            tasks.map((task, index) => {
                                 return (
-                                    <li className='ct__list-item cursor-pointer'>
+                                    <li key={index} className='ct__list-item cursor-pointer'>
                                         <div className="row">
                                             <input type="checkbox" />
                                             <p className="task">{task}</p>
@@ -45,8 +48,8 @@ export const Body = () => {
                             })
                         }
                     </ul>
-                    { !isAddTask && <CtButton onClick={() => setTask(true)} data={{description: 'Add task', prefixIcon: <AddIcon />}}/> }
-                    { isAddTask && <TaskAdd onClick={() => setTask(false)}/> }
+                    { !isAddTask && <CtButton onClick={() => handleTask(true, {})} data={{description: 'Add task', prefixIcon: <AddIcon />}}/> }
+                    { isAddTask && <TaskAdd onClick={(val) => handleTask(false, val)}/> }
                 </section>
             </div>
         </div>
