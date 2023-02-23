@@ -26,9 +26,19 @@
             min-height: 35px;
             width: calc(100% - 24px);
             border-radius: 10px;
-            color: #606060;
+            color: #858585;
             font-size: 14px;
             font-weight: 500;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: #858585;
+                cursor: pointer;
+                path {
+                    fill: #858585;
+                }
+            }
             
             &:hover {
                 background-color: #eeeeee50;

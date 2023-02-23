@@ -20,7 +20,7 @@ export const CtCard = ({ data }) => {
                 {data.body}
                 <div className="ct__card_footer row">
                     <CtButton onClick={handleCancel} data={{ description: 'Cancel', btnType: 'ct__btn-danger' }} />
-                    <CtButton onClick={handleSubmit} data={{ description: 'Add task' }} />
+                    <CtButton onClick={handleSubmit} data={{ description: 'Done' }} />
                 </div>
             </div>
         </div>

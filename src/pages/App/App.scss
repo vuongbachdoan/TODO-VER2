@@ -2,6 +2,7 @@
     position: relative;
     height: 100vh;
     overflow: hidden;
+
     .bg-darken {
         position: absolute;
         top: 0%;
@@ -19,4 +20,75 @@
     display: flex;
     flex-direction: row;
     height: calc(100vh - 55px);
+}
+
+.picker-color__item {
+    width: 14px;
+    height: 14px;
+    border-radius: 28px;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 0px 3px #ccc;
+    margin: 3px;
+    transition: .2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0px 0px 0px 3px #5869ff;
+    }
+}
+
+.picker-color,
+.picker-icon {
+    display: flex;
+    align-items: center;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin: 15px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+
+    svg {
+
+        path {
+            fill: #858585;
+        }
+
+        &:hover>path {
+            fill: #5869ff;
+        }
+    }
+}
+
+.picker-color_expand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        transition: .2s ease-in-out;
+        cursor: pointer;
+
+        path {
+            stroke-width: 2px;
+            stroke: #858585;
+            fill: none;
+        }
+
+        &:hover {
+            transform: translateX(2px);
+
+            path {
+                stroke: #000;
+                fill: none;
+            }
+        }
+    }
+}
+
+.clicked-icon {
+    svg {
+
+        path {
+            fill: #5869ff;
+        }
+    }
 }

@@ -26,7 +26,9 @@ export const Sidebar = () => {
     useEffect(() => {
         WorkspaceService.getWorkspaces(userId)
             .then(
-                (res) => setWorkspaces(res.data)
+                (res) => {
+                    setWorkspaces(res.data)
+                }
             )
     }, [workspaces, userId])
 
