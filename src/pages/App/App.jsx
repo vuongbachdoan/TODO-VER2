@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toogleAddingWorkspace } from "../../redux/reducers/appReducer";
+import { toogleAddingWorkspace, updateWorkspaces } from "../../redux/reducers/appReducer";
 import { AppHeader } from "../../layout/app_header/AppHeader";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Body } from "./components/body/Body";
@@ -187,7 +187,6 @@ const BodyAddWorkspaceCard = ({ getVal }) => {
 }
 
 export const App = () => {
-    const accessToken = useSelector(state => state.appData.userData.access_token);
     const isCollapseSidebar = useSelector(state => state.appData.sidebarCollapse);
     const isAddingWorkspace = useSelector(state => state.appData.addingWorkspaceHide);
     const userData = useSelector((state) => state.appData.userData)
@@ -199,27 +198,36 @@ export const App = () => {
     const handleSubmit = () => {
         if (workspace !== {}) {
             WorkspaceService.createWorkspace({
-                name: workspace.name,
+                name: workspace.name ?? "My Workspace",
                 ownerId: userData.id,
-                prefixIcon: workspace.prefixIcon,
-                suffixIcon: workspace.suffixIcon,
-                colorTheme: workspace.colorTheme
+                prefixIcon: workspace.prefixIcon ?? "workspace",
+                suffixIcon: workspace.suffixIcon ?? "delete",
+                colorTheme: workspace.colorTheme ?? "#858585"
             })
                 .then(res => {
-                    dispatch(addWorkspace(res.data))
-                    dispatch(toogleAddingWorkspace(false))
+                    console.log(res.data)
+                    Promise.all([
+                        dispatch(addWorkspace(res.data)),
+                        dispatch(toogleAddingWorkspace(false))
+                    ])
                 })
         }
     }
 
+    // const [userData, setUserData] = useState({});
     useEffect(() => {
-        WorkspaceService.getWorkspaces(userData.id)
-            .then(res => dispatch(addWorkspace(res.data)))
-    }, [accessToken, userData, dispatch]);
+        localStorage.setItem('user', JSON.stringify(userData));
+        const user = JSON.parse(localStorage.getItem('user'));
+        // setUserData(user);
+        WorkspaceService.getWorkspaces(user.id)
+            .then(res => {
+                console.log(res.data);
+                dispatch(updateWorkspaces(res.data));
+            })
+    }, [userData]);
 
     const [workspace, setWorkspace] = useState({})
     const handleVal = (val) => {
-        console.log(val)
         setWorkspace(val);
     }
 

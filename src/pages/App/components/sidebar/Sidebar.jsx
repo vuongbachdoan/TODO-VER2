@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toogleAddingWorkspace } from '../../../../redux/reducers/appReducer';
+import { toogleAddingWorkspace, updateWorkspaces } from '../../../../redux/reducers/appReducer';
 import { CtMenu } from '../../../../shared/components/Menu/Menu';
 import { CtTreeView } from '../../../../shared/components/TreeView/TreeView';
 import {ReactComponent as TodayIcon} from '../../../../assets/images/icon-today.svg';
@@ -20,17 +20,20 @@ export const Sidebar = () => {
     const handleAddingWorkspace = () => {
         dispatch(toogleAddingWorkspace(true));
     }
-    const userId = useSelector((state) => state.appData.userData.id)
 
-    const [workspaces, setWorkspaces] = useState([])
-    useEffect(() => {
-        WorkspaceService.getWorkspaces(userId)
-            .then(
-                (res) => {
-                    setWorkspaces(res.data)
-                }
-            )
-    }, [workspaces, userId])
+    // const userId = useSelector((state) => state.appData.userData.id);
+    // const [workspaces, setWorkspaces] = useState([])
+    // useEffect(() => {
+    //     WorkspaceService.getWorkspaces(userId)
+    //         .then(
+    //             (res) => {
+    //                 console.log(res.data)
+    //                 setWorkspaces(res.data);
+    //             }
+    //         )
+    // }, []);
+
+    const workspaces = useSelector((state) => state.appData.workspaces);
 
     return (
         <div className="app-sidebar">

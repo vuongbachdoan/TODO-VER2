@@ -29,10 +29,16 @@ export const appSlice = createSlice(
             },
             addWorkspace: (state, action) => {
                 state.workspaces = [...state.workspaces, action.payload];
+            },
+            updateWorkspaces: (state, action) => {
+                state.workspaces = action.payload;
+            },
+            updateTasks: (state, action) => {
+                state.tasks = action.payload;
             }
         }
     },
 )
 
-export const { changeCurrentRoute, toogleSidebar, setTasks, toogleAddingWorkspace, addWorkspace, setUserData } = appSlice.actions;
+export const { changeCurrentRoute, toogleSidebar, setTasks, toogleAddingWorkspace, addWorkspace, setUserData, updateWorkspaces, updateTasks } = appSlice.actions;
 export default appSlice.reducer;

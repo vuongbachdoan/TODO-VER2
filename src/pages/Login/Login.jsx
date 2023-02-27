@@ -50,7 +50,8 @@ export const Login = () => {
                     Promise.all([
                         dispatch(setUserData(res.data))
                     ])
-                    .then((res) => navigate("/app"))
+                        // .then(() => console.log(JSON.parse(localStorage.getItem('user'))))
+                        .then((res) => navigate("/app"))
                 })
                 .catch((err) => console.log(err));
         } else {

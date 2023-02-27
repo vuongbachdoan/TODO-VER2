@@ -44,8 +44,8 @@ export const TaskAdd = ({onClick}) => {
             <CtInput data={{label: "Description", required: false, class: "ct__mt-0", getInput: (val) => handleDescription(val)}}/>
             <div className="row">
                 {
-                    btnsData.map((data) => {
-                        return <CtButton data={data} />
+                    btnsData.map((data, index) => {
+                        return <CtButton key={index} data={data} />
                     })
                 }
             </div>

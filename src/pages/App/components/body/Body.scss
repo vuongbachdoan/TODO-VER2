@@ -14,8 +14,15 @@
 }
 
 .ct__list-item {
-    border-bottom: .5px solid #ccc;
+    position: relative;
     padding: 7px 14px;
+    background-color: #f9fdff;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    &:hover {
+        transition: box-shadow .2s ease-in-out;
+        box-shadow: 0px 0px 2px 2px rgb(222, 255, 244);
+    }
 }
 
 .task-section {
@@ -26,6 +33,49 @@
     padding: 28px 14px;
 }
 
-.task-actions {
-    column-gap: 14px;
+.row .task-actions {
+    column-gap: 15px;
 }
+
+.ct__list-item-title {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+}
+.ct__list-item-description {
+    font-size: 12px;
+    color: #858585;
+}
+
+.task_checkbox {
+    margin-right: 15px;
+}
+
+.grabbable {
+    cursor: auto;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+ /* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.no-pointer {
+    pointer-events: none;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }

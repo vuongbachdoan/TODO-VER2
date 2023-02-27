@@ -8,11 +8,11 @@ const END_POINT = {
 
 export const WorkspaceService = {
     getWorkspaces: (userId) => {
+        console.log(`${userId}: userid`)
         // const header = `Bearer ${accessToken}`;
 
         return axios.get(
-            `${URL}/${END_POINT.getWorkspaces}`,
-            { id: userId},
+            `${URL}/${END_POINT.getWorkspaces}/${userId}`,
             // {
             //     headers: {
             //         Authorization: header
