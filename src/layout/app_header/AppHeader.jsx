@@ -21,7 +21,7 @@ export const AppHeader = () => {
                     { isSidebarCollapse && <MenuIcon/> }
                     { !isSidebarCollapse && <CloseIcon/> }
                 </div>
-                <div className="navbar__home center btn-squared btn-primary">
+                <div className="navbar__home center btn-squared btn-primary ct__btn-primary">
                     <HomeIcon/>
                 </div>
                 <SearchField/>

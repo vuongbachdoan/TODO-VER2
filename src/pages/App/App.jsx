@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toogleAddingWorkspace, updateWorkspaces } from "../../redux/reducers/appReducer";
+import { setCurrentWorkspace, toogleAddingWorkspace, updateWorkspaces } from "../../redux/reducers/appReducer";
 import { AppHeader } from "../../layout/app_header/AppHeader";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Body } from "./components/body/Body";
@@ -21,7 +21,7 @@ import { ReactComponent as DocumentIcon } from "../../assets/images/tabledocumen
 import { ReactComponent as ArrowRightIcon } from "../../assets/images/arrowright.svg";
 import { ReactComponent as WorkspaceIcon } from "../../assets/images/workspace.svg";
 
-const BodyAddWorkspaceCard = ({ getVal }) => {
+const BodyAddWorkspaceCard = ({ getData }) => {
     const colorMap = [
         {
             color: "#858585",
@@ -98,13 +98,8 @@ const BodyAddWorkspaceCard = ({ getVal }) => {
 
 
 
-    const handleInput = (val) => {
-        getVal({
-            name: val,
-            suffixIcon: "delete",
-            prefixIcon: selectedIcon,
-            colorTheme: selectedColor
-        });
+    const handleInput = (type, val) => {
+        getData(type, val)
     }
 
     const [isExpandSelectingColor, setExpandSelectingColor] = useState(true)
@@ -114,12 +109,14 @@ const BodyAddWorkspaceCard = ({ getVal }) => {
     const handleExpandSelectingIcon = (val, color) => {
         setExpandSelectingColor(val);
         setSelectedColor(color);
+        handleInput("color", color);
     }
 
 
     const [selectedIcon, setSelectedIcon] = useState("workspace");
     const handleSelectedIcon = (key) => {
-        setSelectedIcon((iconMap.filter((item) => item.text === key)[0]).text)
+        handleInput("icon", key);
+        setSelectedIcon((iconMap.filter((item) => item.text === key)[0]).text);
     }
 
     return (
@@ -181,7 +178,7 @@ const BodyAddWorkspaceCard = ({ getVal }) => {
                     </div>
                 </div>
             </div>
-            <CtInput data={{ label: "Workspace name", placeholder: "ex: my-workspace", required: true, getInput: (val) => handleInput(val) }} />
+            <CtInput data={{ label: "Workspace name", placeholder: "ex: my-workspace", required: true, getInput: (val) => handleInput("input", val) }} />
         </>
     );
 }
@@ -189,12 +186,33 @@ const BodyAddWorkspaceCard = ({ getVal }) => {
 export const App = () => {
     const isCollapseSidebar = useSelector(state => state.appData.sidebarCollapse);
     const isAddingWorkspace = useSelector(state => state.appData.addingWorkspaceHide);
-    const userData = useSelector((state) => state.appData.userData)
+    const userData = JSON.parse(localStorage.getItem('user'))
 
     const dispatch = useDispatch();
     const handleCancel = () => {
         dispatch(toogleAddingWorkspace(false))
     }
+
+    const [workspace, setWorkspace] = useState({})
+    const handleVal = (type, val) => {
+        if(type === "input") {
+            setWorkspace({
+                ...workspace,
+                name: val
+            })
+        } else if(type === "icon") {
+            setWorkspace({
+                ...workspace,
+                prefixIcon: val
+            })
+        } else if(type === "color") {
+            setWorkspace({
+                ...workspace,
+                colorTheme: val
+            })
+        }
+    }
+
     const handleSubmit = () => {
         if (workspace !== {}) {
             WorkspaceService.createWorkspace({
@@ -205,7 +223,6 @@ export const App = () => {
                 colorTheme: workspace.colorTheme ?? "#858585"
             })
                 .then(res => {
-                    console.log(res.data)
                     Promise.all([
                         dispatch(addWorkspace(res.data)),
                         dispatch(toogleAddingWorkspace(false))
@@ -214,22 +231,13 @@ export const App = () => {
         }
     }
 
-    // const [userData, setUserData] = useState({});
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(userData));
-        const user = JSON.parse(localStorage.getItem('user'));
-        // setUserData(user);
-        WorkspaceService.getWorkspaces(user.id)
+        WorkspaceService.getWorkspaces(userData.id)
             .then(res => {
-                console.log(res.data);
                 dispatch(updateWorkspaces(res.data));
+                dispatch(setCurrentWorkspace(res.data.length === 0 ? "" : res.data[0]._id))
             })
     }, [userData]);
-
-    const [workspace, setWorkspace] = useState({})
-    const handleVal = (val) => {
-        setWorkspace(val);
-    }
 
     return (
         <div className="app">
@@ -246,7 +254,7 @@ export const App = () => {
                         data={{
                             title: "Add workspace",
                             subTitle: <InformationIcon />,
-                            body: <BodyAddWorkspaceCard getVal={(val) => handleVal(val)} />,
+                            body: <BodyAddWorkspaceCard getData={(type, val) => handleVal(type, val)} />,
                             class: "",
                             onCancel: handleCancel,
                             onSubmit: handleSubmit

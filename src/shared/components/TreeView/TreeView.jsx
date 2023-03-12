@@ -6,13 +6,21 @@ import { RenderIcon } from '../../utils/renderIcon';
 import './TreeView.scss';
 
 export const  
-CtTreeView = ({ data }) => {
+CtTreeView = ({ data, onClick, onDelete }) => {
     const [isOpenTree, setOpenTree] = useState(false);
     const handleOpenTree = (val) => {
         setOpenTree(val);
     }
     const handleFunc = () => {
         data.function()
+    }
+
+    const handleClick = (val) => {
+        onClick(val);
+    }
+
+    const handleDelete = (val) => {
+        onDelete(val)
     }
 
     return (
@@ -30,14 +38,16 @@ CtTreeView = ({ data }) => {
                     isOpenTree &&
                     data.children.map((child, index) => {
                         return (
-                            <div key={index} className="ct__tree-child">
+                            <div key={index} className={`ct__tree-child element-theme-${child.colorTheme.replace('#', '')}`} onClick={() => handleClick(child)}>
                                 {
                                     RenderIcon(child.prefixIcon)
                                 }
                                 <p className="col">{child.name}</p>
-                                {
-                                    RenderIcon(child.suffixIcon)
-                                }
+                                <span onClick={() => handleDelete(child._id)}>
+                                    {
+                                        RenderIcon(child.suffixIcon)
+                                    }
+                                </span>
                             </div>
                         );
                     })

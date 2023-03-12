@@ -16,16 +16,16 @@ export const CtPassword = ({ data }) => {
 
     const [passwordValue, setPasswordValue] = useState("");
     useEffect(() => {
-        if(passwordValue.length === 0) {
+        if (passwordValue.length === 0) {
             setErrorMessage('');
         }
-        else if(passwordValue.length >= 8) {
+        else if (passwordValue.length >= 8) {
             setErrorMessage(null);
         } else {
             setErrorMessage("Password must be greater than 8 characters");
         }
     }, [passwordValue])
-    
+
     const handlePasswordValue = (val) => {
         val = val.replace(' ', '')
         setPasswordValue(val);
@@ -38,7 +38,7 @@ export const CtPassword = ({ data }) => {
                 {data.label} <span style={{ color: "red" }}>{data.required ? "*" : ""}</span>
             </h6>
             <div className="ct__input-field">
-                <input className="ct__input-text" value={passwordValue} type={`${isPasswordVisible ? "text" : "password"}`} placeholder={data.placeholder} onChange={(e) => handlePasswordValue(e.target.value)}/>
+                <input className="ct__input-text" value={passwordValue} type={`${isPasswordVisible ? "text" : "password"}`} placeholder={data.placeholder} onChange={(e) => handlePasswordValue(e.target.value)} />
                 <div className="ct__input-suffix_icon">
                     {isPasswordVisible && <EyeIcon className="cursor-pointer" onClick={tooglePassword} />}
                     {!isPasswordVisible && <EyeCrossIcon className="cursor-pointer" onClick={tooglePassword} />}
@@ -76,6 +76,18 @@ export const CtInput = ({ data }) => {
             <p className="ct__input-description">
                 {data.description}
             </p>
+        </div>
+    );
+}
+
+export const DatePicker = ({data}) => {
+    const handleInput = (e) => {
+        data.getInput(e.target.value)
+    }
+    return (
+        <div className="ct__input-wrapper">
+            <h6 className="ct__input-label">Due Date</h6>
+            <input className="ct__input-datetime" type="datetime-local" name="date-time" id="" onChange={handleInput}/>
         </div>
     );
 }

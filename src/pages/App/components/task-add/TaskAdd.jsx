@@ -5,7 +5,7 @@ import { ReactComponent as ClockIcon } from "../../../../assets/images/icon-cloc
 import { ReactComponent as TodayIcon } from "../../../../assets/images/icon-today.svg";
 
 import './TaskAdd.scss';
-import { CtInput } from "../../../../shared/components/Input/Input";
+import { CtInput, DatePicker } from "../../../../shared/components/Input/Input";
 import { useState } from "react";
 
 const btnsData = [
@@ -30,11 +30,17 @@ export const TaskAdd = ({onClick}) => {
     const handleDescription = (val) => {
         setDescription(val)
     }
+    
+    const [datetime, setDatetime] = useState(null);
+    const getDatePiker = (val) => {
+        setDatetime(val)
+    }
 
     const handleClick = () => {
         onClick({
             title: title,
-            description: description
+            description: description,
+            dueDate: datetime
         });
     }
 
@@ -42,6 +48,7 @@ export const TaskAdd = ({onClick}) => {
         <div className="task-add">
             <CtInput data={{label: "Task name", required: true, getInput: (val) => handleTitle(val)}}/>
             <CtInput data={{label: "Description", required: false, class: "ct__mt-0", getInput: (val) => handleDescription(val)}}/>
+            <DatePicker data={{getInput: (val) => getDatePiker(val)}}/>
             <div className="row">
                 {
                     btnsData.map((data, index) => {

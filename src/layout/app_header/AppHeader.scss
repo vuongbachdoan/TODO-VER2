@@ -1,13 +1,18 @@
 .navbar {
-    width: 100%;
-    background-color: #f1f9ff;
+    width: calc(100% - 30px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 55px;
+    height: 60px;
+    margin: 7.5px 15px 0px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0px 0px 22px 0 rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
-.header-left, 
+.header-left,
 .header-right {
     display: flex;
     column-gap: 15px;
@@ -24,9 +29,11 @@
     border-radius: 6px;
     padding-left: 6px;
     padding-right: 6px;
+
     input {
         border: 0px;
         font-weight: 500;
+
         &:focus {
             outline: none;
             border: 0px;

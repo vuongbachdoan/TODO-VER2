@@ -48,10 +48,11 @@ export const Login = () => {
             AuthService.logIn(user)
                 .then((res) => {
                     Promise.all([
-                        dispatch(setUserData(res.data))
+                        localStorage.setItem('user', JSON.stringify(res.data)),
+                        // dispatch(setUserData(res.data))
                     ])
                         // .then(() => console.log(JSON.parse(localStorage.getItem('user'))))
-                        .then((res) => navigate("/app"))
+                        .then(() => navigate("/app"))
                 })
                 .catch((err) => console.log(err));
         } else {
