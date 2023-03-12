@@ -1,33 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { toogleSidebar } from '../../redux/reducers/appReducer';
+import { SearchField } from '../../shared/components/SearchField/SearchField';
 import { ReactComponent as MenuIcon } from '../../assets/images/icon-menu.svg';
 import { ReactComponent as HomeIcon } from '../../assets/images/icon-home.svg';
 import { ReactComponent as CloseIcon } from '../../assets/images/icon-close.svg';
-import { ReactComponent as SearchIcon } from '../../assets/images/icon-search.svg';
 
 import './AppHeader.scss';
-import { toogleSidebar } from '../../pages/App/action';
 
 export const AppHeader = () => {
-    const isSidebarCollapse = useSelector((state) => state.appData.sidebarCollapse);
     const dispatch = useDispatch();
     const handleSidebar = () => {
         dispatch(toogleSidebar())
     }
+    const isSidebarCollapse = useSelector((state) => state.appData.sidebarCollapse);
 
     return (
         <div className="navbar">
             <div className="header-left">
                 <div className="btn__sidebar-collapse center btn-squared btn-primary cursor-pointer" onClick={handleSidebar}>
-                    { !isSidebarCollapse && <MenuIcon/> }
-                    { isSidebarCollapse && <CloseIcon/> }
+                    { isSidebarCollapse && <MenuIcon/> }
+                    { !isSidebarCollapse && <CloseIcon/> }
                 </div>
-                <div className="navbar__home center btn-squared btn-primary">
+                <div className="navbar__home center btn-squared btn-primary ct__btn-primary">
                     <HomeIcon/>
                 </div>
-                <div className="navbar__search-field">
-                    <SearchIcon/>
-                    <input type="text" placeholder='Search' />
-                </div>
+                <SearchField/>
             </div>
             <div className="header-right">
                 <div className="user">

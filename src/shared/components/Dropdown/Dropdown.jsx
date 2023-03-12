@@ -46,29 +46,31 @@ export const CtDropdown = ({ data }) => {
             {
                 isCollapse &&
                 <div className="ct__dropdown-wrapper outline">
-                    <div className="ct__dropdown-options">
-                        <div className="ct__dropdown-option" onClick={() => selectTag(null)}>
-                            <div className="row">
-                                None
+                    <div className="ct__dropdown-scroll">
+                        <div className="ct__dropdown-options">
+                            <div className="ct__dropdown-option" onClick={() => selectTag(null)}>
+                                <div className="row">
+                                    None
+                                </div>
+                                <div className="row">
+                                </div>
                             </div>
-                            <div className="row">
-                            </div>
+                            {
+                                data.map((item) => {
+                                    return (
+                                        <div className="ct__dropdown-option" onClick={() => selectTag(item)}>
+                                            <div className="row">
+                                                {item.prefixIcon}
+                                                {item.label}
+                                            </div>
+                                            <div className="row">
+                                                {/* {item.suffixIcon} */}
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            }
                         </div>
-                        {
-                            data.map((item) => {
-                                return (
-                                    <div className="ct__dropdown-option" onClick={() => selectTag(item)}>
-                                        <div className="row">
-                                            {item.prefixIcon}
-                                            {item.label}
-                                        </div>
-                                        <div className="row">
-                                            {/* {item.suffixIcon} */}
-                                        </div>
-                                    </div>
-                                );
-                            })
-                        }
                     </div>
                 </div>
             }

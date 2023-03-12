@@ -5,6 +5,8 @@ import { ReactComponent as ClockIcon } from "../../../../assets/images/icon-cloc
 import { ReactComponent as TodayIcon } from "../../../../assets/images/icon-today.svg";
 
 import './TaskAdd.scss';
+import { CtInput, DatePicker } from "../../../../shared/components/Input/Input";
+import { useState } from "react";
 
 const btnsData = [
     {
@@ -18,18 +20,39 @@ const btnsData = [
 ]
 
 export const TaskAdd = ({onClick}) => {
+
+    const [title, setTitle] = useState('');
+    const handleTitle = (val) => {
+        setTitle(val)
+    }
+
+    const [description, setDescription] = useState('');
+    const handleDescription = (val) => {
+        setDescription(val)
+    }
+    
+    const [datetime, setDatetime] = useState(null);
+    const getDatePiker = (val) => {
+        setDatetime(val)
+    }
+
     const handleClick = () => {
-        onClick();
+        onClick({
+            title: title,
+            description: description,
+            dueDate: datetime
+        });
     }
 
     return (
         <div className="task-add">
-            <input className="ct__input" type="text" placeholder="Task name" />
-            <input className="ct__input" type="text" placeholder="Description" />
+            <CtInput data={{label: "Task name", required: true, getInput: (val) => handleTitle(val)}}/>
+            <CtInput data={{label: "Description", required: false, class: "ct__mt-0", getInput: (val) => handleDescription(val)}}/>
+            <DatePicker data={{getInput: (val) => getDatePiker(val)}}/>
             <div className="row">
                 {
-                    btnsData.map((data) => {
-                        return <CtButton data={data} />
+                    btnsData.map((data, index) => {
+                        return <CtButton key={index} data={data} />
                     })
                 }
             </div>

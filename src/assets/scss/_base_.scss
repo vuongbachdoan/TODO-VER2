@@ -27,16 +27,31 @@ html {
     padding: .1rem;
 }
 
+// margin 
+
+.ct__my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ct__mt-0 {
+    margin-top: 0px;
+}
+
+.ct__mt-1 {
+    margin-top: 1rem;
+}
+
 // button
 .btn {
     width: fit-content;
     height: fit-content;
     padding: 3px 6px;
-    border-radius: 3px;
+    border-radius: 6px;
 }
 
 .btn-primary {
-    background-color: #41eca7;
+    background-color: #7A61B3;
     color: #fff;
     img {
         color: #fff;
@@ -46,7 +61,7 @@ html {
 .btn-squared {
     width: 28px;
     height: 28px;
-    border-radius: 3px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +69,6 @@ html {
 
 .btn-rounded {
     width: 28px;
-    height: 28px;
     border-radius: 28px;
     display: flex;
     align-items: center;
@@ -89,5 +103,21 @@ html {
 
 // outline
 .outline {
-    outline: .5px solid #eee;
+    outline: .5px dashed #cd7df3;
+}
+
+// animate 
+.ct__animate-solid {
+    transition-duration: .1s;
+    transition-timing-function: linear;
+}
+
+// text 
+.ct__text-white {
+    color: #fafafa;
+}
+
+.ct__desctiption {
+    font-size: 12px;
+    color: #999;
 }

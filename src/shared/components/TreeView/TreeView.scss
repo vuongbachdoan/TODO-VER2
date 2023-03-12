@@ -1,0 +1,157 @@
+.ct__treeview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 12px;
+    min-height: 35px;
+    width: calc(100% - 24px);
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+        background-color: #eee;
+    }
+
+    .ct__tree-childs {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+
+        .ct__tree-child {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3px 12px;
+            min-height: 35px;
+            width: calc(100% - 24px);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+
+            p {
+                color: #858585;
+            }
+
+            svg {
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                fill: #858585;
+
+                path {
+                    fill: #858585;
+                }
+            }
+
+            &:hover {
+                background-color: #eeeeee50;
+            }
+        }
+    }
+}
+
+.bg-gray {
+    background-color: #eee;
+}
+
+.icon-90deg {
+    transform: rotateZ(90deg);
+}
+
+.element-theme-858585 {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #858585 !important;
+        }
+    }
+}
+
+.element-theme-42ec72 {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #42ec72 !important;
+        }
+    }
+}
+
+.element-theme-27e85e {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #27e85e !important;
+        }
+    }
+}
+
+.element-theme-41eca7 {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #41eca7 !important;
+        }
+    }
+}
+
+.element-theme-2d5fdc {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #2d5fdc !important;
+        }
+    }
+}
+
+.element-theme-7242ec {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #7242ec !important;
+        }
+    }
+}
+
+.element-theme-fa4141 {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #fa4141 !important;
+        }
+    }
+}
+
+.element-theme-ec9442 {
+
+    &:hover {
+
+        p,
+        svg,
+        path {
+            fill: #ec9442 !important;
+        }
+    }
+}

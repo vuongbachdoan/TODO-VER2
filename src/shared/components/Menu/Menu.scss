@@ -7,14 +7,15 @@
 }
 
 .ct__menu-item {
-    width: calc(100% - 20px);
+    width: calc(100% - 12px);
     min-height: 35px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #eee;
-    border-radius: 3px;
+    background-color: #7A61B3;
+    border-radius: 10px;
     padding: 3px 6px;
+    color: #fff;
 }
 
 .ct__menu-item.suffixIcon {

@@ -1,0 +1,44 @@
+.login {
+    width: 100%;
+    height: 100vh;
+}
+
+.login__row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.login__left {
+    flex: 4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__right {
+    flex: 6;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+    background: url('../../assets//images//image-login_bg.png');
+    border-bottom-right-radius: 10vh;
+    border-top-left-radius: 10vh;
+    margin: 25px;
+}
+
+.bg-action_btn {
+    padding: 10px;
+    border-radius: 100px;
+    color: #fff;
+    stroke-width: 2px;
+    &:nth-child(1) {
+        border-right: 2.5px solid #fafafa;
+        border-top: 2.5px solid #fafafa;
+    }
+    &:nth-child(2) {
+        border-right: 2.5px solid #fafafa;
+        border-top: 2.5px solid #fafafa;
+    }
+}
